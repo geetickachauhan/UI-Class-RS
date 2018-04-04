@@ -1,0 +1,348 @@
+/**
+*** PS3 - CandyCrush Output
+*** By: Geeticka Chauhan
+*** Collaborators: (from PS2) Maroula Bach, Sayeri Lal, Vaikkunth Mugunthan, Jessica Raquelle; none this time
+*** Thanks to stack overflow and MDN for JS syntax and MIT 6.813 course staff for answering piazza q's
+*** External libraries:
+***     JQUERY https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+***     BOOTSTRAP CSS stylesheet https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+***     BOOTSTRAP JS FILE https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+Please note: Bootstrap is not used for responsiveness, only aesthetics of the buttons and other elements
+*/
+
+/* Global variables */
+
+:root {
+	--color-light-gray: hsl(220, 10%, 85%);
+    --color-gray: hsl(0, 0%, 50%);
+	--color-red: hsl(0, 80%, 48%);
+    --color-light-red: hsla(0, 98%, 48%, 0.22);
+	--color-yellow: hsl(51, 100%, 50%);
+	--color-green: hsl(85, 90%, 37%);
+	--color-orange: hsl(30, 100%, 50%);
+    --color-dark-orange: hsl(20, 100%, 50%);
+    --color-blue: hsl(208, 56%, 46%);
+    --color-dark-blue: hsl(208, 56%, 41%);
+    --color-white: hsl(0, 0%, 100%);
+    --color-dirty-white: hsla(0, 0%, 100%, 0.69);
+    --color-black: hsl(0, 0%, 0%);
+	--color-dark-purple: hsl(300, 100%, 25%);
+    --color-purple: hsl(300, 67%, 37%);
+    --color-silver: hsl(218, 11%, 85%);
+    --color-aqua: hsl(191, 100%, 40%);
+	--duration-move: .05s;   /* Duration to move by 1 cell .05s */
+	--duration-fade: .4s; 
+    --duration-pulsate: 1.2s;
+}
+
+
+html {
+	display: flex;
+	min-height: 100vh;
+}
+
+body {
+	margin: auto;
+    user-select: none;
+    font-size: 2em;
+    background: rgba(0,0,0,0.6);
+/*    background: rgba(7, 48, 62, 0.29)*/
+}
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-flow: column;
+    padding: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    
+    
+    
+    color: var(--color-light-gray);
+/*    background-color: #fff;*/
+/*    background-color: rgba(0,0,0,0.4);*/
+    background: radial-gradient(transparent, rgba(0,0,0,.7)) hsla(200, 15%, 20%, 0.61);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+/*    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 5px 10px 6px -6px #777;*/
+    box-shadow: 0 1px 40px rgba(255, 255, 255, 0.4), 0 0 30px rgba(255, 255, 255, 0.2) inset;
+/*
+    padding-left: 2vw;
+    padding-right: 2vw;
+*/
+}
+.text-primary{
+    color: var(--color-aqua);
+}
+.forminput{
+    height: 100%;
+    background: var(--color-light-gray);
+}
+#top-row{
+    flex: 2;
+}
+#middle-row{
+    flex: 8;
+}
+#bottom-row{
+    flex: 2;
+}
+    
+#formwrapper{
+    margin: auto;
+}
+
+#form{
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 2fr;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.formtext{
+    justify-content: flex-start;
+}
+.radio{
+    display: flex;
+    justify-content: space-between;
+/*    color: var(--color-light-gray);*/
+}
+#outer-circle{
+    fill: var(--color-light-gray);
+    transition: 0.5s;
+/*    cursor: pointer;*/
+/*    cursor: crosshair;*/
+}
+svg text{
+/*    https://stackoverflow.com/questions/12905808/how-to-make-an-svg-text-element-click-through-able*/
+    pointer-events: none; 
+    fill: var(--color-light-gray);
+}
+#outer-circle:hover{
+    fill: var(--color-green);
+}
+#outer-circle:hover text{
+  fill: var(--color-white);
+}
+a{
+   text-decoration: none !important;
+}
+
+
+
+.centerize {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+.spacify{
+    padding: .7vh;   
+}
+
+
+.btn-purple, .btn-purple[disabled]:hover{
+    color: var(--color-white);
+    background-color: var(--color-purple);
+    border-color: var(--color-dark-purple);
+}
+.btn-purple:hover{
+    color: var(--color-white);
+    background: var(--color-dark-purple);
+}
+.btn-primary:hover{
+    background: var(--color-dark-blue);
+}
+.btn-default.btn-gray, .btn-default.btn-gray[disabled]:hover{
+    background-color: var(--color-light-gray);
+    color:var(--color-gray);
+}
+#btn-crushonce:not(:disabled){
+    background: var(--color-blue);
+    color: var(--color-white);
+    border-color: var(--color-dark-blue);
+}
+#btn-crushonce:hover:not(:disabled){
+    background: var(--color-dark-blue);
+}
+.btn-default.btn-gray:not(:disabled) {
+    background: var(--color-orange);
+    border-color: var(--color-dark-orange);
+    --color-glyphicon: var(--color-white);
+}
+.btn-default.btn-gray:hover:not(:disabled) {
+    background: var(--color-dark-orange);
+}
+.text-center {
+    text-align: center;
+}
+.btn-static{ 
+    background-color: var(--color-silver);
+    border: 1px solid var(--color-light-gray);
+/*    cursor: default;*/
+    color: var(--color-white);
+    height: 90px;
+    transition: background-color 0.5s ease;
+    display: inline-block;
+    padding: 6px 12px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 4px;
+}
+.glyphicon{
+    color: var(--color-glyphicon);
+}
+ 
+.btn-big{
+/*    border: 1px solid lightgray;*/
+    display: block;
+    text-align: center;
+    align-content: center;
+    width: 90%;
+    min-width: 45px;
+    max-width: 100px;
+    box-sizing: border-box; 
+    white-space: normal;
+}
+.btn-small{
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    white-space: normal;
+}
+.font-big{
+    font-size: 40px;
+}
+
+.board {
+    display: grid;
+    --grid-gap: 2px;
+    --grid-color: var(--color-silver);
+    --board-size: 400px; 
+    --asize: calc(var(--size) + 1);
+    --cell-outer: calc(var(--board-size) / var(--asize));
+	--cell: calc(var(--cell-outer) - var(--grid-gap));
+/*    --cell-outer-max: calc(var(--max-board-size)/var(--asize));*/
+/*    --cell-max: calc(var(--cell-outer-max)/var(--asize));*/
+    grid-gap: var(--grid-gap);
+    grid-template-columns: repeat(var(--asize), var(--cell));
+    grid-template-rows: repeat(var(--asize), var(--cell)));
+    /*	 Variables to use in creating the board */
+}
+div{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+.cell {
+    background-color: var(--color-light-gray);
+    border-radius: 15%;
+    font-size: 100%;
+    width: var(--cell);
+/*    max-width: var(--cell-max);*/
+    height: var(--cell);
+/*    max-height: var(--cell-max);*/
+}
+.blank-cell{
+    background-color: white;
+    font-size: calc(var(--cell)*0.4);
+    width: var(--cell);
+/*    max-width: var(--cell-max);*/
+    height: var(--cell);
+/*    max-height: var(--cell-max);*/
+}
+.image{
+    height: 60%;
+/*    margin: auto;*/
+/* another option is
+width: 60%;
+height: 60%;
+object-fit: contain;
+*/
+}
+#textbox{
+    font-size: 1.5em; 
+    text-align: center; 
+}
+@keyframes pulsate{  
+    from {transform: scale(1);}
+    60% {transform: scale(1.5); filter: saturate(130%);}
+    to {transform: scale(1);}
+/*
+    0% {transform: scale(1);}
+    30%{transform: scale(1.3);}
+    60% {transform: scale(1.5); filter: saturate(130%)}
+    80% {transform: scale(1.3);}
+    100% {transform: scale(1);}
+*/
+}
+@keyframes fadeout {
+    from {opacity: 1; filter: blur(2px);}
+    to {opacity: 0; filter: blur(10px);}
+/*
+    0% {opacity: 1;}
+    25% {opacity: 0.7; filter: blur(2px);}
+    50% {opacity: 0.3; filter: blur(6px);}
+    75% {opacity: 0; filter: blur(10px);}
+    100% {opacity: 0;} 
+*/
+} 
+@keyframes slide{
+    from {transform: translate(var(--fromhor), var(--fromvert));}
+    to {transform: translate(var(--tohor), var(--tovert));}
+}
+
+@keyframes dropfromhigh{
+    from {transform: translate(0%, calc(-300% * var(--distance))); opacity: 0.3;}
+    to {transform: translate(0%, 0%); opacity: 1;}
+/*
+    0% {transform: translate(0%, calc(-300% * var(--distance))); opacity: 0.3;}
+    25% {transform: translate(0%, calc(-300% * calc(var(--distance)/2))); opacity: 0.4;}
+    50% {transform: translate(0%, calc(-300% * calc(var(--distance)/4))); opacity: 0.6;}
+    75% {transform: translate(0%, calc(-300% * calc(var(--distance)/6))); opacity: 0.7;}
+    100% {transform: translate(0%, 0%); opacity: 1;}
+*/
+}
+/*media query needed to handle page resizing*/
+/*breakpoint at 900px and 600px*/
+@media (max-width: 990px) {
+    .wrapper{
+        flex-flow: column;
+    } 
+/*    grid layout utilities*/
+    #left-col{
+        width: 350px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, auto);
+        margin: auto;
+        justify-content: center;
+    }
+    #candycrushtext{
+        grid-row: 1/3;
+        grid-column: 1/1;
+        padding: 5px;
+    }
+    #divpoints{
+        grid-row: 1/3;
+        grid-column: 2/2;
+        padding: 5px;
+    }
+    #divnewgame{
+        grid-row: 1/1;
+        grid-column: 3/3;
+        padding: 5px;
+    }
+    #divshowhint{
+        grid-row: 2/2;
+        grid-column: 3/3;
+        padding: 5px;
+    }  
+}
+@media (max-width: 250px) {
+    .radio{
+        flex-flow: column;
+        align-items: flex-start;
+    }  
+}

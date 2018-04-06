@@ -21,7 +21,7 @@ Please note: Bootstrap is not used for responsiveness, only aesthetics of the bu
 
 <!-- Load style sheets -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="experiment.css">
 
 <!-- Load any supplemental Javascript libraries here -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/2.4.2/seedrandom.js"></script>
@@ -30,9 +30,12 @@ Please note: Bootstrap is not used for responsiveness, only aesthetics of the bu
 <script src="https://unpkg.com/event-target@latest/min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="d3.min.js"></script>
+<!--<script src="https://d3js.org/d3.v5.min.js"></script>-->
 <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>-->
 
 <script src="util.js"></script>
+<script src="experiment.js"></script>
 
 
 </head>
@@ -41,16 +44,18 @@ Please note: Bootstrap is not used for responsiveness, only aesthetics of the bu
 
 <div class="wrapper"> 
     <header id="top-row">
-        <h2 class="text-primary font-big">
-            <strong>Bubble</strong>
-            <strong>Cursor</strong>
-        </h2>
+<!--        this is where the circles will be drawn-->
+        <div class="page" id="draw-area"></div>
     </header>
-    <main id="middle-row">
-        Welcome to the experiment! 
-        Click start to begin!
-        Please enter your name, age and other demographics before beginning. 
-        <p>
+    <main id="bottom-row">
+        You are on experiment 
+        <span class="text-primary">
+            <span id="current-exp">1</span> 
+            of 2
+        </span>
+<!--        will want to include some button here for downloading when they are done-->
+        
+<!--
         <div id="formwrapper">
             <form id="form">
                 <div class="formtext" id="nametext">Name</div>
@@ -70,16 +75,19 @@ Please note: Bootstrap is not used for responsiveness, only aesthetics of the bu
         </div>
         <p>
         You will be clicking all green circles that appear in front of you. To start, click the circle below.
+-->
     </main>
+<!--
     <div id="bottom-row">
-        <a href="experiment.html">
         <svg height="100" width="100" id="outer-circle">
+            <a href="experiment.html">
             <circle id="circle" cx="50" cy="50" r="40" />
-<!--            stroke="black" stroke-width="3" -->
+            stroke="black" stroke-width="3" 
             <text x="50" y="55" font-family="sans-serif" text-anchor="middle" font-size="20px">Start</text>
+            </a>
         </svg>
-        </a>
     </div>
+-->
 <!--
         <header id="left-col"> 
             <div class="text-center" id="candycrushtext">

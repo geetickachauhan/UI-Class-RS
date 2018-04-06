@@ -45,7 +45,8 @@ body {
 	margin: auto;
     user-select: none;
     font-size: 2em;
-    background: rgba(0,0,0,0.6);
+    background: radial-gradient(transparent, rgba(0, 0, 0, 0.9)) hsla(200, 15%, 20%, 0.8);
+    color: var(--color-light-gray);
 /*    background: rgba(7, 48, 62, 0.29)*/
 }
 .wrapper{
@@ -53,41 +54,47 @@ body {
     justify-content: center;
     align-content: center;
     flex-flow: column;
-    padding: 5%;
+/*    padding: 5%;*/
     margin-left: 5%;
     margin-right: 5%;
-    max-width: 1000px;
-    
-    
-    
-    color: var(--color-light-gray);
-/*    background-color: #fff;*/
-/*    background-color: rgba(0,0,0,0.4);*/
-    background: radial-gradient(transparent, rgba(0,0,0,.7)) hsla(200, 15%, 20%, 0.18);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 2px;
-/*    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 5px 10px 6px -6px #777;*/
-    box-shadow: 0 1px 40px rgba(255, 255, 255, 0.4), 0 0 30px rgba(255, 255, 255, 0.2) inset;
-/*
-    padding-left: 2vw;
-    padding-right: 2vw;
-*/
 }
 .text-primary{
     color: var(--color-aqua);
+    font-weight: bolder;
 }
+
+#draw-area{
+    width:auto;
+    height:auto;
+    position:relative;
+    margin:0px auto;
+    overflow:hidden;
+}
+#draw-area svg{
+    width: 1000px;
+    height: 600px;
+}
+#draw-area svg circle{display:block;}
+#draw-area div{font-size:14px;line-height:18px;color:#000;font-size:Arial;}
+
+
+
+
+
+
+
+
+
 .forminput{
     height: 100%;
     background: var(--color-light-gray);
 }
 #top-row{
-    flex: 2;
-}
-#middle-row{
     flex: 8;
 }
+
 #bottom-row{
-    flex: 2;
+    flex: 4;
 }
     
 #formwrapper{
@@ -129,7 +136,6 @@ svg text{
 }
 a{
    text-decoration: none !important;
-    cursor: default;
 }
 
 
@@ -347,8 +353,4 @@ object-fit: contain;
     body {
     font-size: 1.3em;
     }
-    .radio{
-        flex-flow: column;
-        align-items: flex-start;
-    }  
 }

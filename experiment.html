@@ -42,41 +42,25 @@ Please note: Bootstrap is not used for responsiveness, only aesthetics of the bu
 
 <body>
 
-<div class="wrapper"> 
-    <header id="top-row">
+<div class="wrapper">
+      <header id="top-row">
 <!--        this is where the circles will be drawn-->
         <div class="page" id="draw-area"></div>
-    </header>
+        <div id="start-button"></div>
+        <div id="bubble-cursor"></div>
+        <div id="bubble-cursor2"></div>
+    </header> 
     <main id="bottom-row">
+        
         You are on experiment 
         <span class="text-primary">
             <span id="current-exp">1</span> 
             of 2
         </span>
 <!--        will want to include some button here for downloading when they are done-->
-        
-<!--
-        <div id="formwrapper">
-            <form id="form">
-                <div class="formtext" id="nametext">Name</div>
-                <input class="forminput form-control" type="text" id="name" placeholder="Name">
-                <div class="formtext" id="gendertext">Gender</div>
-                <div class="formtext radio">
-                    <label>
-                        <input class="formradio" type="radio" name="gender" value="male">Male
-                    </label>
-                    <label>
-                        <input class="formradio" type="radio" name="gender" value="female" checked>Female
-                    </label>
-                </div>
-                <div class="formtext" id="nametext">Age</div>
-                <input class="forminput form-control" type="text" id="age" placeholder="Age">
-            </form>
-        </div>
-        <p>
-        You will be clicking all green circles that appear in front of you. To start, click the circle below.
--->
     </main>
+  
+    
 <!--
     <div id="bottom-row">
         <svg height="100" width="100" id="outer-circle">

@@ -33,7 +33,7 @@ Please note: Bootstrap is not used for responsiveness, only aesthetics of the bu
 <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>-->
 
 <script src="util.js"></script>
-
+<script src="main.js"></script>
 
 </head>
 
@@ -47,16 +47,17 @@ Please note: Bootstrap is not used for responsiveness, only aesthetics of the bu
         </h2>
     </header>
     <main id="middle-row">
-        Welcome to the experiment! 
-        Click Go to begin!
+        <div class="text-center bold">Welcome to the Bubble Cursor experiment!</div> <p>
+        You will see various sized circular targets, and you are supposed to click the <span class="text-green">green</span> circular target on every page.
+        To view the green target, you must press the start button which appears once all circles settle on the page randomly. Then click the green target with your cursor to advance. 
         Please enter your name, age and other demographics before beginning. 
         <p>
         <div id="formwrapper">
             <form id="form">
                 <div class="formtext" id="nametext">Name</div>
-                <input class="forminput form-control" type="text" id="name" placeholder="Name">
+                <input class="forminput form-control bold" type="text" id="name" placeholder="Firstname">
                 <div class="formtext" id="gendertext">Gender</div>
-                <div class="formtext radio">
+                <div class="radio">
                     <label>
                         <input class="formradio" type="radio" name="gender" value="male">Male
                     </label>
@@ -65,87 +66,31 @@ Please note: Bootstrap is not used for responsiveness, only aesthetics of the bu
                     </label>
                 </div>
                 <div class="formtext" id="nametext">Age</div>
-                <input class="forminput form-control" type="text" id="age" placeholder="Age">
+                <input class="forminput form-control bold" type="text" id="age" placeholder="Age">
+                <div class="formtext">Cursor</div>
+                <div class="radio">
+                    <label>
+                        <input class="formradio" type="radio" name="cursor" value="bubble">Bubble
+                    </label>
+                    <label>
+                        <input class="formradio" type="radio" name="cursor" value="normal" checked>Normal
+                    </label>
+                </div>
             </form>
         </div>
+        <div class="text-center bold">Click the circle below to begin</div>
         <p>
-        You will be clicking all green circles that appear in front of you. To start, click the circle below.
+        
     </main>
     <div id="bottom-row">
-        <a href="experiment.html">
-        <svg height="100" width="100" id="outer-circle">
+<!--        <a href="experiment.html">-->
+        <svg height="100" width="100" id="outer-circle" onclick="Go()">
             <circle id="circle" cx="50" cy="50" r="40" />
 <!--            stroke="black" stroke-width="3" -->
             <text x="50" y="55" font-family="sans-serif" text-anchor="middle" font-size="20px">Go</text>
         </svg>
-        </a>
+<!--        </a>-->
     </div>
-<!--
-        <header id="left-col"> 
-            <div class="text-center" id="candycrushtext">
-              <h2 class="text-primary font-big">
-                <strong>Candy</strong>
-                <strong>Crush!</strong>
-              </h2>
-            </div>
-            <div class = "spacify" id="divpoints">
-                <div class="btn-static btn-small" id="btn-points">
-                    previously was a disabled button but this is better
-                    <strong class="font-big" id="pointstext">0</strong>
-                    <br><strong>points</strong>
-                </div>
-            </div>
-            <div class = "spacify" id="divnewgame">
-                <input class="btn btn-primary btn-small" type="button" id="newgame" value="New Game">
-            </div>
-            <div class = "spacify" id="divshowhint">
-                <input class="btn btn-purple btn-small" type="button" id="showhint" value="Show Hint">
-            </div>
-        </header>
-
-        <main id="middle-col"> 
-          <div class="board" id="grid" align="center">
-          </div>
-        </main>
-
-        <div id="controls">
-            <div></div>
-            <div class="spacify">
-                <button type="button" class="btn btn-default btn-gray btn-big" id="btn-up">
-                    <span class="glyphicon glyphicon-arrow-up"></span>
-                </button>
-            </div>
-            <div></div>
-            <div class="spacify">
-                    <button type="button" class="btn btn-gray btn-default btn-big" id="btn-left" >
-                        <span class="glyphicon glyphicon-arrow-left"></span>
-                    </button>
-            </div>
-            <div class="spacify">
-                    <input type="text" class="form-control btn-big" aria-describedby="basic-addon1" id="textbox" required> 
-            </div>
-            <div class="spacify">
-                    <button type="button" class="btn btn-default btn-gray btn-big" id="btn-right">
-                        <span class="glyphicon glyphicon-arrow-right"></span>
-                    </button>
-            </div>
-            <div></div>
-            <div class="spacify">
-                <button type="button" class="btn btn-default btn-gray btn-big" id="btn-down">
-                    <span class="glyphicon glyphicon-arrow-down"></span>
-                </button>
-            </div>
-            <div></div>
-            <div></div>
-            <div class="spacify">
-                    <button type="button" class="btn btn-default btn-gray btn-big" 
-                            id="btn-crushonce" >
-                        Crush once
-                    </button>
-            </div>
-            <div></div>
-        </div>
--->
 </div>
 
 </body>

@@ -36,6 +36,7 @@ Please note: Bootstrap is not used for responsiveness, only aesthetics of the bu
 
 <script src="util.js"></script>
 <script src="experiment.js"></script>
+<script src="combinatorics.js"></script>
 
 
 </head>
@@ -51,12 +52,21 @@ Please note: Bootstrap is not used for responsiveness, only aesthetics of the bu
         <div id="bubble-cursor2"></div>
     </header> 
     <main id="bottom-row">
-        
-        You are on experiment 
-        <span class="text-primary">
-            <span id="current-exp">1</span> 
-            of 2
-        </span>
+        <div>
+            <span class="bottom-row-part padding">You are on experiment:</span>
+            <span class="bottom-row-part padding">
+                <span class="text-primary">
+                    <span id="current-exp">1</span> 
+                    of 81
+                </span>
+            </span>
+        </div>
+        <div>
+            <span class="bottom-row-part padding">Cursor:</span>
+            <span class="bottom-row-part padding"><span class="text-primary" id="cursor">Bubble</span></span>
+        </div>
+        <div id="download-text"></div>
+        <div id="download"></div>
 <!--        will want to include some button here for downloading when they are done-->
     </main>
   

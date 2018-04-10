@@ -16,7 +16,7 @@ Please note: Bootstrap is not used for responsiveness, only aesthetics of the bu
 	--color-light-gray: hsl(220, 10%, 85%);
     --color-gray: hsl(0, 0%, 50%);
 	--color-red: hsl(0, 80%, 48%);
-    --color-light-red: hsla(0, 98%, 48%, 0.22);
+    --color-light-red: hsla(0, 77%, 83%, 0.71);
 	--color-yellow: hsl(51, 100%, 50%);
 	--color-green: hsl(85, 90%, 37%);
 	--color-orange: hsl(30, 100%, 50%);
@@ -87,13 +87,21 @@ body {
 /*    overflow:hidden;*/
 }
 
-
 img{
     position:absolute; 
     width:100%; 
     height:100%;
 }
-
+.btn-light{
+    color: var(--color-black);
+}
+.btn-light:hover{
+    color: var(--color-green);
+}
+.padding{
+    padding-left: 5px;
+    padding-right: 5px;
+}
 #bubble-cursor svg{
     height: 100%;
     width: 100%;
@@ -110,8 +118,24 @@ img{
 
 #bottom-row{
     flex: 4;
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+#bottom-row div{
+    margin: auto;
 }
     
+/*
+.bottom-row-part{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+*/
+
+
+
 #formwrapper{
     margin: auto;
 }

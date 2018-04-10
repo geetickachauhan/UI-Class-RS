@@ -1,8 +1,10 @@
 # Bubble Cursor
 Implementation of the paper [Bubble Cursor](http://www.dgp.toronto.edu/~tovi//papers/chi2005bubblecursor.pdf) for the 6.831 UI Implementation and Design class.
+
 Collaborator: Maroula Bach (informed me about Combinatorics library)
 
-[Screencast Link](https://www.youtube.com/watch?v=yVC1mrzBBJQ)
+[Screencast Link](https://youtu.be/j6sqSDGked4)
+
 The experiment is linked [here](http://people.csail.mit.edu/geeticka/UI-Class-RS)
 
 My sequence of tasks is: First the user fills out a form for their demographic information and selects which cursor they want to test first. I recommend them to reload the index page to test the other cursor as well. My reason for breaking the control condition from the test condition was that the user may want to take a small break between the tasks and I didn't want fatigue to influence the truth of my results. Each trial run collects the values of the independent variables listed in the next paragraph along with their demographic information i.e Name, Age, Gender as is collected by the authors of the paper. They did not collect any subjective information, and therefore I am not either. The only question to ask would be "did you like the bubble cursor?" and that doesn't give a lot of insight into the cursor's effectiveness. The data is stored during the experiment in JSON format and is then sent to a google form to store in a google spreadsheet online. 

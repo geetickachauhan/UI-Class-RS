@@ -28,7 +28,7 @@ Please note: Bootstrap is not used for responsiveness, only aesthetics of the bu
 
 <!-- Constructible EventTarget polyfill — Only Chrome 64+ supports constructible EventTarget objects natively -->
 <script src="https://unpkg.com/event-target@latest/min.js"></script>
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>-->
 
@@ -49,7 +49,7 @@ Please note: Bootstrap is not used for responsiveness, only aesthetics of the bu
     <main id="middle-row">
         <div class="text-center bold">Welcome to the Bubble Cursor experiment!</div> <p>
         You will see various sized circular targets, and you should click the <span class="text-green">green</span> circular target on every page.
-        To click the green target, you will need start button which appears once all circles settle on the page. Please perform the experiment with both normal and bubble cursor for comparison purposes. <br>
+        To click the green target, you will need start button which appears once all circles settle on the page. To begin, enter the information below. Please try both normal and bubble cursor options. Experiment length mentions the number of tries each option will produce, and will be a maximum of 10 minutes.<br>
         <div class="text-center">Please enter your demographics and the cursor. </div>
         <p>
         <div id="formwrapper">
@@ -74,6 +74,18 @@ Please note: Bootstrap is not used for responsiveness, only aesthetics of the bu
                     </label>
                     <label>
                         <input class="formradio" type="radio" name="cursor" value="normal" checked>Normal
+                    </label>
+                </div>
+                <div class="formtext">Experiment Length</div>
+                <div class="radio">
+                    <label>
+                        <input class="formradio" type="radio" name="experiments" value="few">Few (8)
+                    </label>
+                    <label>
+                        <input class="formradio" type="radio" name="experiments" value="medium" checked>Medium (24)
+                    </label>
+                    <label>
+                        <input class="formradio" type="radio" name="experiments" value="all" checked>All (81)
                     </label>
                 </div>
             </form>

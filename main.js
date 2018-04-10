@@ -69,6 +69,7 @@ function Go(){
     gender = getRadioVal('gender');
     age = dom.age.value;
     cursor = getRadioVal('cursor');
+    experiments = getRadioVal('experiments');
     var name_regex = new RegExp('^[a-zA-Z]+$');
     var num_regex = new RegExp('^[1-9][0-9]{0,1}$');
     var error = "You have the following errors:";
@@ -90,5 +91,6 @@ function Go(){
     sessionStorage.setItem('age', age);
     sessionStorage.setItem('gender', gender);
     sessionStorage.setItem('cursor', cursor);
+    sessionStorage.setItem('experiments', experiments);
     window.location.href = "experiment.html";
 }

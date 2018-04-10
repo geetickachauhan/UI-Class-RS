@@ -29,6 +29,7 @@ Please note: Bootstrap is not used for responsiveness, only aesthetics of the bu
 
 <!-- Constructible EventTarget polyfill — Only Chrome 64+ supports constructible EventTarget objects natively -->
 <script src="https://unpkg.com/event-target@latest/min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="d3.min.js"></script>
 <!--<script src="https://d3js.org/d3.v5.min.js"></script>-->
@@ -57,7 +58,7 @@ Please note: Bootstrap is not used for responsiveness, only aesthetics of the bu
             <span class="bottom-row-part padding">
                 <span class="text-primary">
                     <span id="current-exp">1</span> 
-                    of 81
+                    of <span id="total-exp">81</span>
                 </span>
             </span>
         </div>

@@ -9,10 +9,8 @@
 ***     BOOTSTRAP JS FILE https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 Please note: Bootstrap is not used for responsiveness, only aesthetics of the buttons and other elements
 **/
-
 // Hand it in this way: for simpler testing, always use the same seed.
 //Math.seedrandom(0);
-//TODO: Clean up
 var target_generated = 0;
 
 
@@ -21,6 +19,7 @@ var _captured = null;
 var _starttime = null, _endtime = null;
 var _start_pressed = false;
 var _A, _w, _eww, _D;
+var _num_clicks = 0; // number of clicks made before the target was selected
 
 // incremented vars
 var _experiment_num = 1;
@@ -33,7 +32,7 @@ var _screenwidth, _screenheight;
 var _unit = 1;
 var _distractor_density = {0.05: 5, 0.4: 10, 0.8: 20};
 var _delay_time = {0.05: '500', 0.1: '1000', 0.8: '1500'};
-var _name, _age, _gender, _cursor;
+var _name, _age, _gender, _cursor, _experiments;
 var _independent_vars;
 //var _delay_time = {0.05: '2500', 0.1: '5000', 0.8: '7000'};
 // target is always circle with id 0
@@ -52,6 +51,7 @@ Util.events(document, {
         dom.cursor = Util.one('#cursor'); // to change the cursor text to bubble cursor versus normal 
         dom.download = Util.one('#download');
         dom.downloadtext = Util.one('#download-text');
+        dom.totalexp = Util.one('#total-exp');
         
         _screenwidth = document.documentElement.clientWidth;
         _screenheight = document.documentElement.clientHeight;
@@ -59,6 +59,7 @@ Util.events(document, {
         _age = sessionStorage.getItem('age');
         _gender = sessionStorage.getItem('gender');
         _cursor = sessionStorage.getItem('cursor');
+        _experiments = sessionStorage.getItem('experiments');
         dom.cursor.innerHTML = _cursor[0].toUpperCase() + _cursor.substring(1);
         startAllExperiments();
     }
@@ -105,6 +106,7 @@ function clickCircle(){
     start_button = document.getElementById('start-button');
     removeAllChildren(start_button);
     // console.log(target, "is target");
+    document.onclick = function(){_num_clicks++;}
     _target.addEventListener('click', function(){
         target_onclick();
     });
@@ -128,8 +130,9 @@ function target_onclick(){
     diff = _endtime - _starttime;
     html = document.querySelector('html');
     html.style.setProperty('cursor', 'default');
-    _data.push({'Name':_name, 'Age':_age, 'Gender':_gender, 'Cursor':_cursor, 'A': _A, 'w': _w, 'eww': _eww, 'Total-Density':_D, 'Distractors': (_distractor_density[_D] - 1), 'Time(ms)': diff}); 
-    _A = null, _w = null, _eww = null, _D = null, _target = null, _captured = null, _starttime = null, _endtime = null, _start_pressed = false;
+    _data.push({'Name':_name, 'Age':_age, 'Gender':_gender, 'Cursor':_cursor, 'A': _A, 'w': _w, 'eww': _eww, 'Total-Density':_D, 'Distractors': (_distractor_density[_D] - 1), 'Time(ms)': diff, 'NumClicks': (_num_clicks -1)}); 
+    // whenever NumClicks > 0, that counts as an error. Percentage of error depends on how many rows the NumClicks>0 for
+    _A = null, _w = null, _eww = null, _D = null, _target = null, _captured = null, _starttime = null, _endtime = null, _start_pressed = false, _num_clicks = 0;
     _experiment_num++;
     dom.currentexp.innerHTML = _experiment_num;
     removeAllChildren(dom.drawarea);
@@ -150,11 +153,12 @@ function target_onclick(){
     if(vals == null){
         // this is when we reach the end of the experiment
         console.log(_data);
+        sendToFormBubbleCursor(_data);
         elements = document.querySelectorAll('.bottom-row-part');
         for(i=0; i<elements.length; i++){
             removeAllChildren(elements[i]);
         }
-        dom.downloadtext.innerHTML = "Congratulations! You have reached the end of the experiment! Please download the data.";
+        dom.downloadtext.innerHTML = "Congratulations! You have reached the end of the experiment! You may download the data if you wish.";
         d = dom.download;
         d.innerHTML = "<button class='btn btn-success' onclick='download()' type='button' id='download-button'><span class='glyphicon glyphicon-download-alt'></span></button>";
         d2 = Util.one('#bottom-row');
@@ -165,7 +169,7 @@ function target_onclick(){
 Create and download the CSV file
 */
 function download(){
-    var fileName = _name + '_' + _cursor;
+    var fileName = _name.toLowerCase() + '_' + _cursor;
     var CSV = JSONToCSV(_data, _name + " performed this experiment using " +_cursor + " cursor");
     fileName = fileName.split(' ').join('_');
     var uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
@@ -230,6 +234,7 @@ function onClick(e){
         if(_captured == _target){
             target_onclick();
             // here we can simulate the start of the next experiment
+            _num_clicks++;
         }
     }
 }
@@ -496,12 +501,28 @@ function existOnBoard(x, y, offset){
 starts all experiments
 */
 function startAllExperiments(){
-    A = [256*_unit, 512*_unit, 768*_unit];
-    w = [8*_unit, 16*_unit, 32*_unit];
-//    eww = [1.33, 2, 3];
-    eww = [3, 4, 5];
-    D = [0.05, 0.4, 0.8];
-//    A=[256], w = [8], eww=[3], D=[0.05];
+    if(_experiments == "few"){
+        A=[512*_unit];
+        w=[8*_unit, 16*_unit];
+        eww=[3,4];
+        D=[0.05,0.4];
+        dom.totalexp.innerHTML = "8";
+    }
+    else if(_experiments == "medium"){
+        A=[256*_unit, 512*_unit];
+        w=[8*_unit, 16*_unit];
+        eww=[3, 4];
+        D=[0.05, 0.4, 0.8];
+        dom.totalexp.innerHTML = "24";
+    }
+    else{
+        A = [256*_unit, 512*_unit, 768*_unit];
+        w = [8*_unit, 16*_unit, 32*_unit];
+        eww = [3, 4, 5];
+        D = [0.05, 0.4, 0.8];
+        dom.totalexp.innerHTML = "81";
+    }
+//    A=[256*_unit, 512*_unit], w = [8*_unit], eww=[3], D=[0.05, 0.8];
     _independent_vars = Combinatorics.cartesianProduct(A, w, eww, D);
     window.dispatchEvent(new CustomEvent("experiment0done"));
     vals = _independent_vars.next();
@@ -511,7 +532,7 @@ function startAllExperiments(){
 }
 
 /* convert a Json into a csv file */
-var JSONToCSV = function(data, reportTitle) {
+function JSONToCSV(data, reportTitle) {
 	var CSV = '';
 	CSV += reportTitle + '\r\n\n'
 
@@ -531,4 +552,38 @@ var JSONToCSV = function(data, reportTitle) {
 		CSV += row + '\r\n';
 	}
 	return CSV;
+}
+
+/*
+Give this function individual data fields
+ created using David Bau's gist at https://gist.github.com/davidbau/8c168b2720eacbf4e68e9e0a9f437838
+ Bubble-Cursor submission function
+ submits to the google form at this URL:
+ docs.google.com/forms/d/e/1FAIpQLSfCpH0WlXUe9Ro1EAq8Quj1fhHTT1sbXF9CvdT8pYdjOKTWog/viewform
+*/
+function sendToFormBubbleCursor(datafields){
+    for(i=0; i<datafields.length; i++){
+    
+        var formid = "e/1FAIpQLSfCpH0WlXUe9Ro1EAq8Quj1fhHTT1sbXF9CvdT8pYdjOKTWog";
+        var data = {
+            "entry.1471085130": datafields[i]['Name'],
+            "entry.1873421313": datafields[i]['Age'],
+            "entry.1530291618": datafields[i]['Gender'],
+            "entry.2116772833": datafields[i]['Cursor'],
+            "entry.1386335538": datafields[i]['A'],
+            "entry.1897161171": datafields[i]['w'],
+            "entry.1667270748": datafields[i]['eww'],
+            "entry.1303636101": datafields[i]['Total-Density'],
+            "entry.1952175203": datafields[i]['Distractors'],
+            "entry.1819253252": datafields[i]['Time(ms)'],
+            "entry.478510575": datafields[i]['NumClicks']
+        };
+        var params = [];
+        for (key in data) {
+            params.push(key + "=" + encodeURIComponent(data[key]));
+        }
+        // Submit the form using an image to avoid CORS warnings.
+        (new Image).src = "https://docs.google.com/forms/d/" + formid +
+         "/formResponse?" + params.join("&");
+    }
 }

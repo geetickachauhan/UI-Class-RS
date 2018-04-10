@@ -1,7 +1,7 @@
 /**
-*** PS3 - CandyCrush Output
+*** RS1 
 *** By: Geeticka Chauhan
-*** Collaborators: (from PS2) Maroula Bach, Sayeri Lal, Vaikkunth Mugunthan, Jessica Raquelle; none this time
+*** Collaborators: Maroula Bach
 *** Thanks to stack overflow and MDN for JS syntax and MIT 6.813 course staff for answering piazza q's
 *** External libraries:
 ***     JQUERY https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -31,9 +31,7 @@ Please note: Bootstrap is not used for responsiveness, only aesthetics of the bu
     --color-silver: hsl(218, 11%, 85%);
     --color-aqua: hsl(191, 100%, 40%);
     --color-light-aqua: hsla(169, 65%, 43%, 0.48);
-	--duration-move: .05s;   /* Duration to move by 1 cell .05s */
-	--duration-fade: .4s; 
-    --duration-pulsate: 1.2s;
+    --circle-height: 100px;
 }
 
 
@@ -52,34 +50,11 @@ body {
     font-weight: 300;
 /*    background: rgba(7, 48, 62, 0.29)*/
 }
-text-center{
-    text-align: center;
-}
-.wrapper{
+div{
     display: flex;
-    justify-content: center;
+    align-items: center;
     align-content: center;
-    flex-flow: column;
-    padding: 5%;
-    margin-left: 5%;
-    margin-right: 5%;
-    max-width: 1000px;
-    max-height: 100vh;
-    
-    
-    
-    color: var(--color-light-gray);
-/*    background-color: #fff;*/
-/*    background-color: rgba(0,0,0,0.4);*/
-    background: radial-gradient(transparent, rgba(0,0,0,.7)) hsla(200, 15%, 20%, 0.18);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 2px;
-/*    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 5px 10px 6px -6px #777;*/
-    box-shadow: 0 1px 40px rgba(255, 255, 255, 0.4), 0 0 30px rgba(255, 255, 255, 0.2) inset;
-/*
-    padding-left: 2vw;
-    padding-right: 2vw;
-*/
+    justify-content: center;
 }
 .text-primary{
     color: var(--color-aqua);
@@ -87,6 +62,43 @@ text-center{
 .text-green{
     color: var(--color-green);
 }
+a{
+   text-decoration: none !important;
+    cursor: default;
+}
+.centerize {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+.spacify{
+    padding: .7vh;   
+}
+
+.text-center {
+    text-align: center;
+}
+.font-big{
+    font-size: 2.5em;
+}
+
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-flow: column;
+    padding: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
+    max-width: 1000px;
+    max-height: 100vh;
+    color: var(--color-light-gray);
+    background: radial-gradient(transparent, rgba(0,0,0,.7)) hsla(200, 15%, 20%, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 2px;
+    box-shadow: 0 1px 40px rgba(255, 255, 255, 0.4), 0 0 30px rgba(255, 255, 255, 0.2) inset;
+}
+
 .forminput{
     height: 100%;
     background: var(--color-light-gray);
@@ -99,6 +111,10 @@ text-center{
 }
 #bottom-row{
     flex: 2;
+}
+#bottom-row div{
+    height: var(--circle-height);
+    width: var(--circle-height);
 }
     
 #formwrapper{
@@ -126,11 +142,13 @@ text-center{
 .bold{
     font-weight: bold;
 }
+#bottom-row svg{
+    height: var(--circle-height);
+    width: var(--circle-height);
+}
 #outer-circle{
     fill: var(--color-light-gray);
     transition: 0.5s;
-/*    cursor: pointer;*/
-/*    cursor: crosshair;*/
 }
 svg text{
 /*    https://stackoverflow.com/questions/12905808/how-to-make-an-svg-text-element-click-through-able*/
@@ -143,44 +161,51 @@ svg text{
 #outer-circle:hover text{
   fill: var(--color-white);
 }
-a{
-   text-decoration: none !important;
-    cursor: default;
+@media (max-width: 650px){
+    .font-big{
+        font-size: 2.2em;
+    }
+    body {
+    font-size: 1.7em;
+    }
+    .wrapper{
+        max-height: none;
+    }
+    :root{
+        --circle-height: 80px;
+    }
 }
-
-.centerize {
-    display: block;
-    margin: auto;
-    text-align: center;
+@media (max-width: 500px) {
+    .font-big{
+        font-size: 2em;
+    }
+    body {
+    font-size: 1.5em;
+        
+    }
+    :root{
+        --circle-height: 70px;
+    }
 }
-.spacify{
-    padding: .7vh;   
-}
-
-.text-center {
-    text-align: center;
-}
-
-
-.font-big{
-    font-size: 40px;
-}
-
-
-div{
-    display: flex;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-}
-
-
 @media (max-width: 350px) {
+    .font-big{
+        font-size: 1.8em;
+    }
     body {
     font-size: 1.3em;
+        font-weight: 400;
+    }
+    .radio label{
+    font-weight: 400;
     }
     .radio{
         flex-flow: column;
         align-items: flex-start;
-    }  
+    } 
+    #bottom-row svg text{
+        font-size: 15px;
+    }
+    :root{
+        --circle-height: 60px;
+    }
 }

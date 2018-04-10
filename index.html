@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <!--
----- RS1 - 
+---- RS1 
 ---- By: Geeticka Chauhan
----- Collaborators: (from PS2) Maroula Bach, Sayeri Lal, Vaikkunth Mugunthan, Jessica Raquelle; none this time
+---- Collaborators: Maroula Bach
 ---- Thanks to stack overflow and MDN for JS syntax and MIT 6.813 course staff for answering piazza q's
 ---- External libraries:
 ----     JQUERY https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 ----     BOOTSTRAP CSS stylesheet https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-----     BOOTSTRAP JS FILE https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+----     UTIL.JS 6.813 Staff
 Please note: Bootstrap is not used for responsiveness, only aesthetics of the buttons and other elements
 -->
 <html>
@@ -28,7 +28,7 @@ Please note: Bootstrap is not used for responsiveness, only aesthetics of the bu
 
 <!-- Constructible EventTarget polyfill — Only Chrome 64+ supports constructible EventTarget objects natively -->
 <script src="https://unpkg.com/event-target@latest/min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>-->
 
@@ -48,9 +48,9 @@ Please note: Bootstrap is not used for responsiveness, only aesthetics of the bu
     </header>
     <main id="middle-row">
         <div class="text-center bold">Welcome to the Bubble Cursor experiment!</div> <p>
-        You will see various sized circular targets, and you are supposed to click the <span class="text-green">green</span> circular target on every page.
-        To view the green target, you must press the start button which appears once all circles settle on the page randomly. Then click the green target with your cursor to advance. 
-        Please enter your name, age and other demographics before beginning. 
+        You will see various sized circular targets, and you should click the <span class="text-green">green</span> circular target on every page.
+        To click the green target, you will need start button which appears once all circles settle on the page. Please perform the experiment with both normal and bubble cursor for comparison purposes. <br>
+        <div class="text-center">Please enter your demographics and the cursor. </div>
         <p>
         <div id="formwrapper">
             <form id="form">
@@ -83,13 +83,12 @@ Please note: Bootstrap is not used for responsiveness, only aesthetics of the bu
         
     </main>
     <div id="bottom-row">
-<!--        <a href="experiment.html">-->
-        <svg height="100" width="100" id="outer-circle" onclick="Go()">
-            <circle id="circle" cx="50" cy="50" r="40" />
-<!--            stroke="black" stroke-width="3" -->
-            <text x="50" y="55" font-family="sans-serif" text-anchor="middle" font-size="20px">Go</text>
+        <div>
+        <svg height="100%" width="100%" id="outer-circle" onclick="Go()">
+            <circle id="circle" cx="50%" cy="50%" r="40%" />
+            <text x="50%" y="55%" font-family="sans-serif" text-anchor="middle" font-size="20px">Go</text>
         </svg>
-<!--        </a>-->
+        </div>
     </div>
 </div>
 

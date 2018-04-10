@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <!--
----- RS1 - 
+---- RS1
 ---- By: Geeticka Chauhan
----- Collaborators: (from PS2) Maroula Bach, Sayeri Lal, Vaikkunth Mugunthan, Jessica Raquelle; none this time
+---- Collaborators: Maroula Bach
 ---- Thanks to stack overflow and MDN for JS syntax and MIT 6.813 course staff for answering piazza q's
 ---- External libraries:
-----     JQUERY https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 ----     BOOTSTRAP CSS stylesheet https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-----     BOOTSTRAP JS FILE https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+----     D3.JS V3  https://d3js.org/d3.v3.min.js 
+----     COMBINATORICS.JS https://github.com/dankogai/js-combinatorics
+----     UTIL.JS 6.813 Staff
 Please note: Bootstrap is not used for responsiveness, only aesthetics of the buttons and other elements
 -->
 <html>
@@ -28,7 +29,6 @@ Please note: Bootstrap is not used for responsiveness, only aesthetics of the bu
 
 <!-- Constructible EventTarget polyfill — Only Chrome 64+ supports constructible EventTarget objects natively -->
 <script src="https://unpkg.com/event-target@latest/min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="d3.min.js"></script>
 <!--<script src="https://d3js.org/d3.v5.min.js"></script>-->
@@ -67,87 +67,7 @@ Please note: Bootstrap is not used for responsiveness, only aesthetics of the bu
         </div>
         <div id="download-text"></div>
         <div id="download"></div>
-<!--        will want to include some button here for downloading when they are done-->
     </main>
-  
-    
-<!--
-    <div id="bottom-row">
-        <svg height="100" width="100" id="outer-circle">
-            <a href="experiment.html">
-            <circle id="circle" cx="50" cy="50" r="40" />
-            stroke="black" stroke-width="3" 
-            <text x="50" y="55" font-family="sans-serif" text-anchor="middle" font-size="20px">Start</text>
-            </a>
-        </svg>
-    </div>
--->
-<!--
-        <header id="left-col"> 
-            <div class="text-center" id="candycrushtext">
-              <h2 class="text-primary font-big">
-                <strong>Candy</strong>
-                <strong>Crush!</strong>
-              </h2>
-            </div>
-            <div class = "spacify" id="divpoints">
-                <div class="btn-static btn-small" id="btn-points">
-                    previously was a disabled button but this is better
-                    <strong class="font-big" id="pointstext">0</strong>
-                    <br><strong>points</strong>
-                </div>
-            </div>
-            <div class = "spacify" id="divnewgame">
-                <input class="btn btn-primary btn-small" type="button" id="newgame" value="New Game">
-            </div>
-            <div class = "spacify" id="divshowhint">
-                <input class="btn btn-purple btn-small" type="button" id="showhint" value="Show Hint">
-            </div>
-        </header>
-
-        <main id="middle-col"> 
-          <div class="board" id="grid" align="center">
-          </div>
-        </main>
-
-        <div id="controls">
-            <div></div>
-            <div class="spacify">
-                <button type="button" class="btn btn-default btn-gray btn-big" id="btn-up">
-                    <span class="glyphicon glyphicon-arrow-up"></span>
-                </button>
-            </div>
-            <div></div>
-            <div class="spacify">
-                    <button type="button" class="btn btn-gray btn-default btn-big" id="btn-left" >
-                        <span class="glyphicon glyphicon-arrow-left"></span>
-                    </button>
-            </div>
-            <div class="spacify">
-                    <input type="text" class="form-control btn-big" aria-describedby="basic-addon1" id="textbox" required> 
-            </div>
-            <div class="spacify">
-                    <button type="button" class="btn btn-default btn-gray btn-big" id="btn-right">
-                        <span class="glyphicon glyphicon-arrow-right"></span>
-                    </button>
-            </div>
-            <div></div>
-            <div class="spacify">
-                <button type="button" class="btn btn-default btn-gray btn-big" id="btn-down">
-                    <span class="glyphicon glyphicon-arrow-down"></span>
-                </button>
-            </div>
-            <div></div>
-            <div></div>
-            <div class="spacify">
-                    <button type="button" class="btn btn-default btn-gray btn-big" 
-                            id="btn-crushonce" >
-                        Crush once
-                    </button>
-            </div>
-            <div></div>
-        </div>
--->
 </div>
 
 </body>

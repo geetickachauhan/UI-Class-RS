@@ -1,4 +1,15 @@
-//var _name, _gender, _age, _cursor;
+/**
+*** RS1
+*** By: Geeticka Chauhan
+*** Collaborators: Maroula Bach
+*** Thanks to stack overflow and MDN for JS syntax and MIT 6.813 course staff for answering piazza q's
+*** External libraries:
+***     JQUERY https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+***     BOOTSTRAP CSS stylesheet https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+***     UTIL.JS 6.813 Staff
+Please note: Bootstrap is not used for responsiveness, only aesthetics of the buttons and other elements
+**/
+
 // Holds DOM elements that don’t change, to avoid repeatedly querying the DOM
 var dom = {};
 
@@ -33,20 +44,12 @@ Util.events(document, {
             }
         });
            
-    },
-        
- 
-    // Keyboard events arrive here
-    "keydown": function(evt) {
-      
-    },
-	// Click events arrive here
-	"click": function(evt) {
-		// Your code here
-	}
+    }
 });
 
-
+/*
+Get the value of radio buttons given name
+*/
 function getRadioVal(name){
     radios = document.getElementsByName(name);
     for (var i = 0; i < radios.length; i++)
@@ -58,7 +61,10 @@ function getRadioVal(name){
     }
 }
 
-var Go = function(){
+/*
+onclick function for clicking the Go SVG circle
+*/
+function Go(){
     name = dom.name.value;
     gender = getRadioVal('gender');
     age = dom.age.value;

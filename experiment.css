@@ -1,7 +1,7 @@
 /**
-*** PS3 - CandyCrush Output
+*** RS1
 *** By: Geeticka Chauhan
-*** Collaborators: (from PS2) Maroula Bach, Sayeri Lal, Vaikkunth Mugunthan, Jessica Raquelle; none this time
+*** Collaborators: Maroula Bach
 *** Thanks to stack overflow and MDN for JS syntax and MIT 6.813 course staff for answering piazza q's
 *** External libraries:
 ***     JQUERY https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -31,9 +31,6 @@ Please note: Bootstrap is not used for responsiveness, only aesthetics of the bu
     --color-silver: hsl(218, 11%, 85%);
     --color-aqua: hsl(191, 100%, 40%);
     --color-light-aqua: hsla(169, 65%, 43%, 0.48);
-	--duration-move: .05s;   /* Duration to move by 1 cell .05s */
-	--duration-fade: .4s; 
-    --duration-pulsate: 1.2s;
 }
 
 
@@ -48,14 +45,12 @@ body {
     font-size: 2em;
     background: radial-gradient(transparent, rgba(0, 0, 0, 0.9)) hsla(200, 15%, 20%, 0.8);
     color: var(--color-light-gray);
-/*    background: rgba(7, 48, 62, 0.29)*/
 }
 .wrapper{
     display: flex;
     justify-content: center;
     align-content: center;
     flex-flow: column;
-/*    padding: 5%;*/
     margin-left: 5%;
     margin-right: 5%;
 }
@@ -73,18 +68,16 @@ body {
 }
 #draw-area svg{
     width: 1000px;
-/*    700 width also works*/
     height: 600px;
 }
 #draw-area svg circle{display:block;}
-#draw-area div{font-size:14px;line-height:18px;color:#000;font-size:Arial;}
+/*#draw-area div{font-size:14px;line-height:18px;color:#000;font-size:Arial;}*/
 
 #bubble-cursor{
     width:auto;
     height:auto;
     position:relative;
     margin:0px auto;
-/*    overflow:hidden;*/
 }
 
 img{
@@ -92,11 +85,8 @@ img{
     width:100%; 
     height:100%;
 }
-.btn-light{
-    color: var(--color-black);
-}
-.btn-light:hover{
-    color: var(--color-green);
+.btn-success:hover{
+    color: var(--color-dirty-white);
 }
 .padding{
     padding-left: 5px;
@@ -126,42 +116,7 @@ img{
 #bottom-row div{
     margin: auto;
 }
-    
-/*
-.bottom-row-part{
-    padding-left: 5px;
-    padding-right: 5px;
-}
-*/
 
-
-
-#formwrapper{
-    margin: auto;
-}
-
-#form{
-    display: grid;
-    grid-template-rows: 1fr 2fr 1fr;
-    grid-template-columns: 1fr 2fr;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-.formtext{
-    justify-content: flex-start;
-}
-.radio{
-    display: flex;
-    justify-content: space-between;
-/*    transition: background-color ease-in-out .3s, box-shadow ease-in-out .3s;*/
-/*    color: var(--color-light-gray);*/
-}
-#outer-circle{
-    fill: var(--color-light-gray);
-    transition: 0.5s;
-/*    cursor: pointer;*/
-/*    cursor: crosshair;*/
-}
 svg text{
 /*    https://stackoverflow.com/questions/12905808/how-to-make-an-svg-text-element-click-through-able*/
     pointer-events: none; 
@@ -177,8 +132,6 @@ a{
    text-decoration: none !important;
 }
 
-
-
 .centerize {
     display: block;
     margin: auto;
@@ -189,207 +142,16 @@ a{
 }
 
 
-.btn-purple, .btn-purple[disabled]:hover{
-    color: var(--color-white);
-    background-color: var(--color-purple);
-    border-color: var(--color-dark-purple);
-}
-.btn-purple:hover{
-    color: var(--color-white);
-    background: var(--color-dark-purple);
-}
-.btn-primary:hover{
-    background: var(--color-dark-blue);
-}
-.btn-default.btn-gray, .btn-default.btn-gray[disabled]:hover{
-    background-color: var(--color-light-gray);
-    color:var(--color-gray);
-}
-#btn-crushonce:not(:disabled){
-    background: var(--color-blue);
-    color: var(--color-white);
-    border-color: var(--color-dark-blue);
-}
-#btn-crushonce:hover:not(:disabled){
-    background: var(--color-dark-blue);
-}
-.btn-default.btn-gray:not(:disabled) {
-    background: var(--color-orange);
-    border-color: var(--color-dark-orange);
-    --color-glyphicon: var(--color-white);
-}
-.btn-default.btn-gray:hover:not(:disabled) {
-    background: var(--color-dark-orange);
-}
+
 .text-center {
     text-align: center;
 }
-.btn-static{ 
-    background-color: var(--color-silver);
-    border: 1px solid var(--color-light-gray);
-/*    cursor: default;*/
-    color: var(--color-white);
-    height: 90px;
-    transition: background-color 0.5s ease;
-    display: inline-block;
-    padding: 6px 12px;
-    text-align: center;
-    vertical-align: middle;
-    border-radius: 4px;
-}
-.glyphicon{
-    color: var(--color-glyphicon);
-}
- 
-.btn-big{
-/*    border: 1px solid lightgray;*/
-    display: block;
-    text-align: center;
-    align-content: center;
-    width: 90%;
-    min-width: 45px;
-    max-width: 100px;
-    box-sizing: border-box; 
-    white-space: normal;
-}
-.btn-small{
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-    white-space: normal;
-}
-.font-big{
-    font-size: 40px;
-}
 
-.board {
-    display: grid;
-    --grid-gap: 2px;
-    --grid-color: var(--color-silver);
-    --board-size: 400px; 
-    --asize: calc(var(--size) + 1);
-    --cell-outer: calc(var(--board-size) / var(--asize));
-	--cell: calc(var(--cell-outer) - var(--grid-gap));
-/*    --cell-outer-max: calc(var(--max-board-size)/var(--asize));*/
-/*    --cell-max: calc(var(--cell-outer-max)/var(--asize));*/
-    grid-gap: var(--grid-gap);
-    grid-template-columns: repeat(var(--asize), var(--cell));
-    grid-template-rows: repeat(var(--asize), var(--cell)));
-    /*	 Variables to use in creating the board */
-}
+ 
+
 div{
     display: flex;
     align-items: center;
     align-content: center;
     justify-content: center;
-}
-.cell {
-    background-color: var(--color-light-gray);
-    border-radius: 15%;
-    font-size: 100%;
-    width: var(--cell);
-/*    max-width: var(--cell-max);*/
-    height: var(--cell);
-/*    max-height: var(--cell-max);*/
-}
-.blank-cell{
-    background-color: white;
-    font-size: calc(var(--cell)*0.4);
-    width: var(--cell);
-/*    max-width: var(--cell-max);*/
-    height: var(--cell);
-/*    max-height: var(--cell-max);*/
-}
-.image{
-    height: 60%;
-/*    margin: auto;*/
-/* another option is
-width: 60%;
-height: 60%;
-object-fit: contain;
-*/
-}
-#textbox{
-    font-size: 1.5em; 
-    text-align: center; 
-}
-@keyframes pulsate{  
-    from {transform: scale(1);}
-    60% {transform: scale(1.5); filter: saturate(130%);}
-    to {transform: scale(1);}
-/*
-    0% {transform: scale(1);}
-    30%{transform: scale(1.3);}
-    60% {transform: scale(1.5); filter: saturate(130%)}
-    80% {transform: scale(1.3);}
-    100% {transform: scale(1);}
-*/
-}
-@keyframes fadeout {
-    from {opacity: 1; filter: blur(2px);}
-    to {opacity: 0; filter: blur(10px);}
-/*
-    0% {opacity: 1;}
-    25% {opacity: 0.7; filter: blur(2px);}
-    50% {opacity: 0.3; filter: blur(6px);}
-    75% {opacity: 0; filter: blur(10px);}
-    100% {opacity: 0;} 
-*/
-} 
-@keyframes slide{
-    from {transform: translate(var(--fromhor), var(--fromvert));}
-    to {transform: translate(var(--tohor), var(--tovert));}
-}
-
-@keyframes dropfromhigh{
-    from {transform: translate(0%, calc(-300% * var(--distance))); opacity: 0.3;}
-    to {transform: translate(0%, 0%); opacity: 1;}
-/*
-    0% {transform: translate(0%, calc(-300% * var(--distance))); opacity: 0.3;}
-    25% {transform: translate(0%, calc(-300% * calc(var(--distance)/2))); opacity: 0.4;}
-    50% {transform: translate(0%, calc(-300% * calc(var(--distance)/4))); opacity: 0.6;}
-    75% {transform: translate(0%, calc(-300% * calc(var(--distance)/6))); opacity: 0.7;}
-    100% {transform: translate(0%, 0%); opacity: 1;}
-*/
-}
-/*media query needed to handle page resizing*/
-/*breakpoint at 900px and 600px*/
-@media (max-width: 990px) {
-    .wrapper{
-        flex-flow: column;
-    } 
-/*    grid layout utilities*/
-    #left-col{
-        width: 350px;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, auto);
-        margin: auto;
-        justify-content: center;
-    }
-    #candycrushtext{
-        grid-row: 1/3;
-        grid-column: 1/1;
-        padding: 5px;
-    }
-    #divpoints{
-        grid-row: 1/3;
-        grid-column: 2/2;
-        padding: 5px;
-    }
-    #divnewgame{
-        grid-row: 1/1;
-        grid-column: 3/3;
-        padding: 5px;
-    }
-    #divshowhint{
-        grid-row: 2/2;
-        grid-column: 3/3;
-        padding: 5px;
-    }  
-}
-@media (max-width: 350px) {
-    body {
-    font-size: 1.3em;
-    }
 }

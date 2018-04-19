@@ -58,9 +58,9 @@ Util.events(document, {
         _name = sessionStorage.getItem('name');
         _age = sessionStorage.getItem('age');
         _gender = sessionStorage.getItem('gender');
-        _cursor = sessionStorage.getItem('cursor');
+//        _cursor = sessionStorage.getItem('cursor');
         _experiments = sessionStorage.getItem('experiments');
-        dom.cursor.innerHTML = _cursor[0].toUpperCase() + _cursor.substring(1);
+//        dom.cursor.innerHTML = _cursor[0].toUpperCase() + _cursor.substring(1);
         startAllExperiments();
     }
 });
@@ -68,11 +68,13 @@ Util.events(document, {
 /*
 This function starts one of the experiments
 */
-function startExperiment(A, w, eww, D, currentExperiment){
+function startExperiment(A, w, eww, D, cursor, currentExperiment){
     _A = A;
     _w = w;
     _eww = eww;
     _D = D;
+    _cursor = cursor;
+    dom.cursor.innerHTML = _cursor[0].toUpperCase() + _cursor.substring(1);
     padding = (eww*w - 2*w)/2; // should be divided by 2
     drawcircles(padding, D, w, _distractor_density[D]);
     promise = Util.when(window, "circle"+currentExperiment+"done");
@@ -132,7 +134,7 @@ function target_onclick(){
     html.style.setProperty('cursor', 'default');
     _data.push({'Name':_name, 'Age':_age, 'Gender':_gender, 'Cursor':_cursor, 'A': _A, 'w': _w, 'eww': _eww, 'Total-Density':_D, 'Distractors': (_distractor_density[_D] - 1), 'Time(ms)': diff, 'NumClicks': (_num_clicks -1)}); 
     // whenever NumClicks > 0, that counts as an error. Percentage of error depends on how many rows the NumClicks>0 for
-    _A = null, _w = null, _eww = null, _D = null, _target = null, _captured = null, _starttime = null, _endtime = null, _start_pressed = false, _num_clicks = 0;
+    _A = null, _w = null, _eww = null, _D = null, _target = null, _captured = null, _starttime = null, _endtime = null, _start_pressed = false, _num_clicks = 0, _cursor= null;
     _experiment_num++;
     dom.currentexp.innerHTML = _experiment_num;
     removeAllChildren(dom.drawarea);
@@ -148,7 +150,7 @@ function target_onclick(){
     window.dispatchEvent(new CustomEvent("experiment"+(_experiment_num - 1)+"done"));
     vals = _independent_vars.next();
     if(vals!= null){
-        startExperiment(vals[0], vals[1], vals[2], vals[3], _experiment_num);
+        startExperiment(vals[0], vals[1], vals[2], vals[3], vals[4], _experiment_num);
     }
     if(vals == null){
         // this is when we reach the end of the experiment
@@ -169,8 +171,8 @@ function target_onclick(){
 Create and download the CSV file
 */
 function download(){
-    var fileName = _name.toLowerCase() + '_' + _cursor;
-    var CSV = JSONToCSV(_data, _name + " performed this experiment using " +_cursor + " cursor");
+    var fileName = _name.toLowerCase();
+    var CSV = JSONToCSV(_data, _name + " performed this experiment using both cursors");
     fileName = fileName.split(' ').join('_');
     var uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
     var link = document.createElement('a');
@@ -506,28 +508,31 @@ function startAllExperiments(){
         w=[8*_unit, 16*_unit];
         eww=[3,4];
         D=[0.05,0.4];
-        dom.totalexp.innerHTML = "8";
+        cursor=['normal', 'bubble'];
+        dom.totalexp.innerHTML = "16";
     }
     else if(_experiments == "medium"){
         A=[256*_unit, 512*_unit];
         w=[8*_unit, 16*_unit];
         eww=[3, 4];
         D=[0.05, 0.4, 0.8];
-        dom.totalexp.innerHTML = "24";
+        cursor=['normal', 'bubble'];
+        dom.totalexp.innerHTML = "48";
     }
     else{
         A = [256*_unit, 512*_unit, 768*_unit];
         w = [8*_unit, 16*_unit, 32*_unit];
         eww = [3, 4, 5];
         D = [0.05, 0.4, 0.8];
-        dom.totalexp.innerHTML = "81";
+        cursor=['normal', 'bubble'];
+        dom.totalexp.innerHTML = "162";
     }
 //    A=[256*_unit, 512*_unit], w = [8*_unit], eww=[3], D=[0.05, 0.8];
-    _independent_vars = Combinatorics.cartesianProduct(A, w, eww, D);
+    _independent_vars = Combinatorics.cartesianProduct(A, w, eww, D, cursor);
     window.dispatchEvent(new CustomEvent("experiment0done"));
     vals = _independent_vars.next();
     if(vals!= null){
-        startExperiment(vals[0], vals[1], vals[2], vals[3], _experiment_num);
+        startExperiment(vals[0], vals[1], vals[2], vals[3], vals[4], _experiment_num);
     }
 }
 

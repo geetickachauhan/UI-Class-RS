@@ -68,7 +68,7 @@ function Go(){
     name = dom.name.value;
     gender = getRadioVal('gender');
     age = dom.age.value;
-    cursor = getRadioVal('cursor');
+//    cursor = getRadioVal('cursor');
     experiments = getRadioVal('experiments');
     var name_regex = new RegExp('^[a-zA-Z]+$');
     var num_regex = new RegExp('^[1-9][0-9]{0,1}$');
@@ -90,7 +90,7 @@ function Go(){
     sessionStorage.setItem('name', name);
     sessionStorage.setItem('age', age);
     sessionStorage.setItem('gender', gender);
-    sessionStorage.setItem('cursor', cursor);
+//    sessionStorage.setItem('cursor', cursor);
     sessionStorage.setItem('experiments', experiments);
     window.location.href = "experiment.html";
 }

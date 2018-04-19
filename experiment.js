@@ -108,10 +108,12 @@ function clickCircle(){
     start_button = document.getElementById('start-button');
     removeAllChildren(start_button);
     // console.log(target, "is target");
-    document.onclick = function(){_num_clicks++;}
+    if(_cursor == 'normal'){
+    document.onclick = function(e){if(e.button == 0){_num_clicks++;}}
     _target.addEventListener('click', function(){
         target_onclick();
     });
+    }
     
     if(_cursor == "bubble"){
     // below is only if bubble cursor is activated
@@ -233,10 +235,10 @@ This is the onclick tracker for the bubble cursor
 */
 function onClick(e){
     if(e.button == 0){
+        _num_clicks++;
         if(_captured == _target){
             target_onclick();
             // here we can simulate the start of the next experiment
-            _num_clicks++;
         }
     }
 }
